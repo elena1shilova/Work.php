@@ -1,59 +1,42 @@
-<!-- <?php
+<?php
 $text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua';
 echo $nev_text = str_replace (',','',$text), '<br>';//замена запятых пробелами
 $arr = explode (' ', ($nev_text));//приобразуем в массив
-$min = $arr[0];
-
-// print_r($arr);
-$max = strlen($arr[0]);
-$min = strlen($arr[0]);
-foreach($arr as $i=>$key)
-{
- 
-if($max < strlen($key)){
-    $max = $key;
-    $valueMax = $i;
+$maxLenght = strlen($arr[0]);
+$maxWord = '';
+$minLenght = strlen($arr[0]);
+$minWord = '';
+foreach($arr as $key=>$valuo){
+    $arr2 = array();
+    if($maxLenght < strlen($valuo)){
+        $maxLenght = strlen($valuo);
+        $maxWord = $valuo;
+        $indexMax = $key;
+    }
+   if($minLenght > strlen($valuo)){
+        $minLenght = strlen($valuo);
+        $minWord = $valuo;
+        $indexMin = $key;
+   }
+//    echo '<pre>';
+//    var_dump($minWord);
+//    echo '</pre>';
 }
-if($min > strlen($key)){
-    $min = $key;
-    $valueMin = $i;
+$check = 0;
+for ($i=0;$i<count($arr);$i++){
+    $arrNew=[$check];
+    if(strlen($arr[$i])==$minLenght){
+        $arrNew[$check] = $arr[$i];
+        echo $arrNew[$check] . ' ';
+        $check++;
+    }
 }
-
-}
-
+echo '<br>';
 echo 'Максимальное значение массива и его Индекс<br>';
-echo $max.'<br>';
-echo $valueMax.'<br>';
+echo $maxWord.'<br>';
+echo $indexMax.'<br>';
 echo 'Минимальное значение массива и его Индекс<br>';
-echo $min.'<br>';
-echo $valueMin;
-?> -->
-<!-- 
-//     for ($i=0; $i < count($arr); $i++) { 
-//          if((strlen($arr[$i]))>(strlen($max))) $max = $arr[$i];
-//     }
-//     for ($i=0; $i < count($arr); $i++) { 
-//         if((strlen($arr[$i]))<(strlen($min))) $min = $arr[$i];
-//    }
-// $arr[$value] = strlen($value);
-// if ($arr[$value]>$max) 
-// {
-// echo $arr[$value];
-// }
--->
-
-<!-- 
-
-<?php
-$userAge = array('Антон' => 13,
-                'Денис' => 82,
-                'Дима' => 18,
-                'Анна' => 24,
-                'Ольга' => 36);
-foreach ($userAge as $key => $value) {
-    if($value >= 18) echo $key . ' - Привет! <br>';
-    else echo $key . ' - Вам сюда нельзя! <br>';
-}
-?> -->
-
+echo $minWord.'<br>';
+echo $indexMin;
+?>
 
